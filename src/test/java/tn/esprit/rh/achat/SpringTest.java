@@ -16,6 +16,8 @@ import tn.esprit.rh.achat.entities.Fournisseur;
 import tn.esprit.rh.achat.repositories.FournisseurRepository;
 import tn.esprit.rh.achat.services.FournisseurServiceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertNotNull;
@@ -33,6 +35,13 @@ public class SpringTest {
     FournisseurServiceImpl fournisseurService;
 
     Fournisseur fournisseur = new Fournisseur(10,"ff","ff", CategorieFournisseur.CONVENTIONNE,null,null,null);
+
+    List<Fournisseur> listFournisseur = new ArrayList<Fournisseur>(){
+        {
+            add ( new Fournisseur (1,"ff","ff", null,null,null,null));
+            add ( new Fournisseur (2,"ff","ff", null,null,null,null));
+        }
+    };
 
     @Test
     public void retriveFournissur(){
