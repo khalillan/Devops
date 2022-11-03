@@ -43,12 +43,12 @@ public class SpringTest {
         }
     };
 
-    @Test
-    public void retriveFournissur(){
-        Mockito.when(fournisseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(fournisseur));
-        Fournisseur f = fournisseurService.retrieveFournisseur(10);
-        assertNotNull(f);
-        log.info("get ==> " + f.toString());
-    }
+   // @Test
+   // public void retriveFournissur(){
+    //    Mockito.when(fournisseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(fournisseur));
+    //    Fournisseur f = fournisseurService.retrieveFournisseur(10);
+    //    assertNotNull(f);
+    //    log.info("get ==> " + f.toString());
+   // }
 
 }
