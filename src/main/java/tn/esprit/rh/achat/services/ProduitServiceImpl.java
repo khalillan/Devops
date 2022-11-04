@@ -10,6 +10,7 @@ import tn.esprit.rh.achat.repositories.ProduitRepository;
 import tn.esprit.rh.achat.repositories.StockRepository;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -63,6 +64,13 @@ public class ProduitServiceImpl implements IProduitService {
 		Stock stock = stockRepository.findById(idStock).orElse(null);
 		produit.setStock(stock);
 		produitRepository.save(produit);
+
+	}
+
+	@Override
+	public float getRevenuBrutProduit(Long idProduit, Date startDate, Date endDate) {
+		Produit produit=produitRepository.findById(idProduit).orElse(null);
+		return produitRepository.getRevenuBrutProduit(produit,startDate,endDate);
 
 	}
 
