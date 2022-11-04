@@ -2,7 +2,11 @@ package tn.esprit.rh.achat.controllers;
 
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.modelmapper.ModelMapper;
+import tn.esprit.rh.achat.DTO.FournisseurDto;
 import tn.esprit.rh.achat.entities.Fournisseur;
 import tn.esprit.rh.achat.services.IFournisseurService;
 
@@ -17,11 +21,13 @@ public class FournisseurRestController {
 	@Autowired
 	IFournisseurService fournisseurService;
 
+	@Autowired
+	private ModelMapper modelMapper;
+
 	@GetMapping("/retrieve-all-fournisseurs")
 	@ResponseBody
 	public List<Fournisseur> getFournisseurs() {
-		List<Fournisseur> fournisseurs = fournisseurService.retrieveAllFournisseurs();
-		return fournisseurs;
+		return fournisseurService.retrieveAllFournisseurs();
 	}
 
 	@GetMapping("/retrieve-fournisseur/{fournisseur-id}")
@@ -33,9 +39,11 @@ public class FournisseurRestController {
 	// http://localhost:8089/SpringMVC/fournisseur/add-fournisseur
 	@PostMapping("/add-fournisseur")
 	@ResponseBody
-	public Fournisseur addFournisseur(@RequestBody Fournisseur f) {
-		Fournisseur fournisseur = fournisseurService.addFournisseur(f);
-		return fournisseur;
+	public ResponseEntity<FournisseurDto> addFournisseur(@RequestBody FournisseurDto f) {
+		Fournisseur fournisseurRequest = modelMapper.map(f, Fournisseur.class);
+		Fournisseur fournisseur = fournisseurService.addFournisseur(fournisseurRequest);
+		FournisseurDto fournisseurDto = modelMapper.map(fournisseur, FournisseurDto.class);
+		return new ResponseEntity<FournisseurDto>(fournisseurDto, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/remove-fournisseur/{fournisseur-id}")
@@ -46,8 +54,12 @@ public class FournisseurRestController {
 
 	@PutMapping("/modify-fournisseur")
 	@ResponseBody
-	public Fournisseur modifyFournisseur(@RequestBody Fournisseur fournisseur) {
-		return fournisseurService.updateFournisseur(fournisseur);
+	public ResponseEntity<FournisseurDto> modifyFournisseur(@RequestBody FournisseurDto fournisseurDto) {
+		Fournisseur fournisseurRequest = modelMapper.map(fournisseurDto, Fournisseur.class);
+
+		Fournisseur fournisseur = fournisseurService.updateFournisseur(fournisseurRequest);
+		FournisseurDto fournisseurResponse = modelMapper.map(fournisseur , FournisseurDto.class);
+		return  ResponseEntity.ok().body(fournisseurResponse);
 	}
 
 		@PutMapping(value = "/assignSecteurActiviteToFournisseur/{idSecteurActivite}/{idFournisseur}")
