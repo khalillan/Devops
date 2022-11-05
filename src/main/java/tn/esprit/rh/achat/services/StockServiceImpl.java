@@ -49,6 +49,7 @@ public class StockServiceImpl implements IStockService {
 
 	@Override
 	public Stock updateStock(Stock s) {
+		//if(x==2)System.out.println("hey");
 		log.info("In method updateStock");
 		return stockRepository.save(s);
 	}
