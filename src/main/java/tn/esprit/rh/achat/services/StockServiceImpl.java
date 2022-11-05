@@ -70,18 +70,19 @@ public class StockServiceImpl implements IStockService {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		Date now = new Date();
 		String msgDate = sdf.format(now);
-		String finalMessage = "";
+
+		StringBuilder stringBuilder=new StringBuilder();
 		String newLine = System.getProperty("line.separator");
 		List<Stock> stocksEnRouge = (List<Stock>) stockRepository.retrieveStatusStock();
 		for (int i = 0; i < stocksEnRouge.size(); i++) {
-			finalMessage = newLine + finalMessage + msgDate + newLine + ": le stock "
+			stringBuilder.append( newLine  + msgDate + newLine + ": le stock "
 					+ stocksEnRouge.get(i).getLibelleStock() + " a une quantité de " + stocksEnRouge.get(i).getQte()
 					+ " inférieur à la quantité minimale a ne pas dépasser de " + stocksEnRouge.get(i).getQteMin()
-					+ newLine;
+					+ newLine);
 
 		}
-		log.info(finalMessage);
-		return finalMessage;
+		log.info(stringBuilder.toString());
+		return stringBuilder.toString();
 	}
 
 }

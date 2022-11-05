@@ -12,13 +12,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.rh.achat.entities.Fournisseur;
 import tn.esprit.rh.achat.repositories.FournisseurRepository;
 import tn.esprit.rh.achat.services.FournisseurServiceImpl;
-
+import org.assertj.core.api.Assertions;
 import java.util.Optional;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 @Slf4j
-public class SpringTest {
+class SpringTest {
 
     @Mock
     FournisseurRepository fournisseurRepository;
@@ -29,9 +29,10 @@ public class SpringTest {
     Fournisseur fournisseur = new Fournisseur(1,"ff","ff",null,null,null,null);
 
     @Test
-    public void retriveFournissur(){
+    void retriveFournissur(){
         Mockito.when(fournisseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(fournisseur));
         Fournisseur f = fournisseurService.retrieveFournisseur(1);
+        Assertions.assertThat(f).isNotNull();
         log.info("get ==> " + f.toString());
     }
 
