@@ -1,0 +1,19 @@
+version: "3"
+services:
+  mysqldb:
+    image: mysqldb
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_DOCKER_PORT
+    ports:
+      - MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
+    volumes:
+    - db:/var/lib/mysql
+  spring-app:
+    image: achat
+    retart: on_failure
+    ports:
+      - 8089:8089
+    depends_on:
+      - mysqldb
