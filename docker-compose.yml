@@ -1,19 +1,21 @@
 version: "3"
 services:
+  dockerfile:
+    image: khalillandoulsi/dockerfile
+    ports:
+      - "8089:8089"
+    networks:
+      - dockerfile
+    volumes:
+      - /achats/dir:/app
+
   mysqldb:
-    image: mysqldb
+    image: mysql:5.6.17
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
-      - MYSQL_DATABASE=$MYSQLDB_DOCKER_PORT
-    ports:
-      - MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
+      MYSQL_ROOT_PASSWORD: root
     volumes:
-    - db:/var/lib/mysql
-  spring-app:
-    image: achat
-    retart: on_failure
-    ports:
-      - 8089:8089
-    depends_on:
-      - mysqldb
+      - /home/mysql/data:/var/lib/mysql
+
+networks:
+  dockerfile:
