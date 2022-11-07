@@ -21,8 +21,8 @@ public class FournisseurRestController {
 	@Autowired
 	IFournisseurService fournisseurService;
 
-	@Autowired
-	private ModelMapper modelMapper;
+	// @Autowired
+	// private ModelMapper modelMapper;
 
 	@GetMapping("/retrieve-all-fournisseurs")
 	@ResponseBody
@@ -40,10 +40,10 @@ public class FournisseurRestController {
 	@PostMapping("/add-fournisseur")
 	@ResponseBody
 	public ResponseEntity<FournisseurDto> addFournisseur(@RequestBody FournisseurDto f) {
-		Fournisseur fournisseurRequest = modelMapper.map(f, Fournisseur.class);
-		Fournisseur fournisseur = fournisseurService.addFournisseur(fournisseurRequest);
-		FournisseurDto fournisseurDto = modelMapper.map(fournisseur, FournisseurDto.class);
-		return new ResponseEntity<FournisseurDto>(fournisseurDto, HttpStatus.CREATED);
+	//	Fournisseur fournisseurRequest = modelMapper.map(f, Fournisseur.class);
+	//	Fournisseur fournisseur = fournisseurService.addFournisseur(fournisseurRequest);
+	//	FournisseurDto fournisseurDto = modelMapper.map(fournisseur, FournisseurDto.class);
+		return null;
 	}
 
 	@DeleteMapping("/remove-fournisseur/{fournisseur-id}")
@@ -55,11 +55,11 @@ public class FournisseurRestController {
 	@PutMapping("/modify-fournisseur")
 	@ResponseBody
 	public ResponseEntity<FournisseurDto> modifyFournisseur(@RequestBody FournisseurDto fournisseurDto) {
-		Fournisseur fournisseurRequest = modelMapper.map(fournisseurDto, Fournisseur.class);
+	//	Fournisseur fournisseurRequest = modelMapper.map(fournisseurDto, Fournisseur.class);
 
-		Fournisseur fournisseur = fournisseurService.updateFournisseur(fournisseurRequest);
-		FournisseurDto fournisseurResponse = modelMapper.map(fournisseur , FournisseurDto.class);
-		return  ResponseEntity.ok().body(fournisseurResponse);
+	//	Fournisseur fournisseur = fournisseurService.updateFournisseur(fournisseurRequest);
+	//	FournisseurDto fournisseurResponse = modelMapper.map(fournisseur , FournisseurDto.class);
+		return  null;
 	}
 
 		@PutMapping(value = "/assignSecteurActiviteToFournisseur/{idSecteurActivite}/{idFournisseur}")
