@@ -3,7 +3,7 @@ services:
   dockerfile:
     image: khalillandoulsi/dockerfile
     ports:
-      - 8092:8092
+      - 8089:8089
     container_name: achat
     restart: on-failure
     volumes:
@@ -12,14 +12,13 @@ services:
       - mysqldb
     environment:
       SPRING_APPLICATION_JSON: '{
-            "server.port" : "8092",
-            "spring.datasource.url"  : "jdbc:mysql://mysqldb/achatdb?createDatabaseIfNotExist=true",
+            "server.port" : "8089",
+            "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/achatdb?createDatabaseIfNotExist=true",
             "spring.datasource.username" : "root",
-            "spring.datasource.password" : "test",
+            "spring.datasource.password" : "root",
             "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
             "spring.jpa.hibernate.ddl-auto" : "update"
           }'
-
   mysqldb:
     image: mysql:5.6.17
     container_name: mysqldb
@@ -27,29 +26,11 @@ services:
       - 3306:3306
     restart: unless-stopped
     environment:
-      - MYSQL_DB= root
-      - MYSQL_ROOT_PASSWORD= test
+      - MYSQL_DB=root
+      - MYSQL_ROOT_PASSWORD=root
     volumes:
       - achat_db:/var/lib/mysql
 
-  Sonarqube:
-    image: sonarqube:8.9.7-community
-    ports:
-      - "9000:9000"
-      - "9092:9092"
-    volumes:
-      - 'sonarQube_data:/opt/SonarQube/data'
-      - 'sonarQube_extensions:/opt/SonarQube/extensions'
-      - 'sonarQube_logs:/opt/SonarQube/logs'
-  nexus:
-    image: sonatype/nexus3
-    ports:
-      - "8081:8081"
-    volumes:
-      - "nexus-data:/sonatype-work"
 
 volumes:
-  sonarQube_data:
-  sonarQube_extensions:
-  sonarQube_logs:
-  nexus-data:
+  achat_db:
