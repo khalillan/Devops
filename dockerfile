@@ -1,5 +1,5 @@
 
-FROM openjdk:8-jdk-alpine
-EXPOSE 8089
-COPY target/*.jar achat.jar
+FROM openjdk:11
+EXPOSE 8092
+ADD target/*.jar achat.jar
 ENTRYPOINT ["java","-jar","achat.jar"]

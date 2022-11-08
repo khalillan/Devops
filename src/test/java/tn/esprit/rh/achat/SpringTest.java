@@ -22,7 +22,7 @@ import java.util.Optional;
 
 import static org.junit.Assert.assertNotNull;
 
-@SpringBootTest
+
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Slf4j
