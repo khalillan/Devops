@@ -1,20 +1,20 @@
 package tn.esprit.rh.achat.services;
 
-import tn.esprit.rh.achat.entities.CategorieProduit;
+import tn.esprit.rh.achat.dto.CategorieProduitDto;
 
 import java.util.List;
 
 
 public interface ICategorieProduitService {
 
-	List<CategorieProduit> retrieveAllCategorieProduits();
+	List<CategorieProduitDto> retrieveAllCategorieProduits();
 
-	CategorieProduit addCategorieProduit(CategorieProduit cp);
+	CategorieProduitDto addCategorieProduit(CategorieProduitDto cp);
 
 	void deleteCategorieProduit(Long id);
 
-	CategorieProduit updateCategorieProduit(CategorieProduit cp);
+	CategorieProduitDto updateCategorieProduit(CategorieProduitDto cp);
 
-	CategorieProduit retrieveCategorieProduit(Long id);
+	CategorieProduitDto retrieveCategorieProduit(Long id);
 
 }

@@ -1,21 +1,21 @@
 package tn.esprit.rh.achat.services;
 
-import tn.esprit.rh.achat.entities.Produit;
+import tn.esprit.rh.achat.dto.ProduitDto;
 
 import java.util.Date;
 import java.util.List;
 
 public interface IProduitService {
 
-	List<Produit> retrieveAllProduits();
+	List<ProduitDto> retrieveAllProduits();
 
-	Produit addProduit(Produit p);
+	ProduitDto addProduit(ProduitDto p);
 
 	void deleteProduit(Long id);
 
-	Produit updateProduit(Produit p);
+	ProduitDto updateProduit(ProduitDto p);
 
-	Produit retrieveProduit(Long id);
+	ProduitDto retrieveProduit(Long id);
 
 	void assignProduitToStock(Long idProduit, Long idStock);
 	float getRevenuBrutProduit(Long idProduit, Date startDate,Date endDate);

@@ -4,7 +4,7 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.rh.achat.entities.Produit;
+import tn.esprit.rh.achat.dto.ProduitDto;
 import tn.esprit.rh.achat.services.IProduitService;
 
 import java.util.Date;
@@ -23,21 +23,21 @@ public class ProduitRestController {
 	// http://localhost:8089/SpringMVC/produit/retrieve-all-produits
 	@GetMapping("/retrieve-all-produits")
 	@ResponseBody
-	public List<Produit> getProduits() {
+	public List<ProduitDto> getProduits() {
 		return produitService.retrieveAllProduits();
 	}
 
 	// http://localhost:8089/SpringMVC/produit/retrieve-produit/8
 	@GetMapping("/retrieve-produit/{produit-id}")
 	@ResponseBody
-	public Produit retrieveRayon(@PathVariable("produit-id") Long produitId) {
+	public ProduitDto retrieveRayon(@PathVariable("produit-id") Long produitId) {
 		return produitService.retrieveProduit(produitId);
 	}
 
 
 	@PostMapping("/add-produit")
 	@ResponseBody
-	public Produit addProduit(@RequestBody Produit p) {
+	public ProduitDto addProduit(@RequestBody ProduitDto p) {
 		return  produitService.addProduit(p);
 	}
 
@@ -51,7 +51,7 @@ public class ProduitRestController {
 
 	@PutMapping("/modify-produit")
 	@ResponseBody
-	public Produit modifyProduit(@RequestBody Produit p) {
+	public ProduitDto modifyProduit(@RequestBody ProduitDto p) {
 		return produitService.updateProduit(p);
 	}
 

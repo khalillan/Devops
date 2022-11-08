@@ -3,7 +3,7 @@ package tn.esprit.rh.achat.controllers;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.rh.achat.entities.CategorieProduit;
+import tn.esprit.rh.achat.dto.CategorieProduitDto;
 import tn.esprit.rh.achat.services.ICategorieProduitService;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public class CategorieProduitController {
 	// http://localhost:8089/SpringMVC/categorieProduit/retrieve-all-categorieProduit
 	@GetMapping("/retrieve-all-categorieProduit")
 	@ResponseBody
-	public List<CategorieProduit> getCategorieProduit() {
+	public List<CategorieProduitDto> getCategorieProduit() {
 		return categorieProduitService.retrieveAllCategorieProduits();
 
 	}
@@ -27,14 +27,14 @@ public class CategorieProduitController {
 	// http://localhost:8089/SpringMVC/categorieProduit/retrieve-categorieProduit/8
 	@GetMapping("/retrieve-categorieProduit/{categorieProduit-id}")
 	@ResponseBody
-	public CategorieProduit retrieveCategorieProduit(@PathVariable("categorieProduit-id") Long categorieProduitId) {
+	public CategorieProduitDto retrieveCategorieProduit(@PathVariable("categorieProduit-id") Long categorieProduitId) {
 		return categorieProduitService.retrieveCategorieProduit(categorieProduitId);
 	}
 
 	// http://localhost:8089/SpringMVC/categorieProduit/add-categorieProduit
 	@PostMapping("/add-categorieProduit")
 	@ResponseBody
-	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) {
+	public CategorieProduitDto addCategorieProduit(@RequestBody CategorieProduitDto cp) {
 		return categorieProduitService.addCategorieProduit(cp);
 
 	}
@@ -49,7 +49,7 @@ public class CategorieProduitController {
 	// http://localhost:8089/SpringMVC/categorieProduit/modify-categorieProduit
 	@PutMapping("/modify-categorieProduit")
 	@ResponseBody
-	public CategorieProduit modifyCategorieProduit(@RequestBody CategorieProduit categorieProduit) {
+	public CategorieProduitDto modifyCategorieProduit(@RequestBody CategorieProduitDto categorieProduit) {
 		return categorieProduitService.updateCategorieProduit(categorieProduit);
 	}
 
