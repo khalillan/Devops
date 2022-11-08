@@ -13,7 +13,6 @@ pipeline {
         registry = "https://hub.docker.com/repository/docker/yahiahj/jenkins-spring"
         registryCredential = 'dockerhub_id'
         dockerImage = ''
-}
     }
     stages {
         stage('Git Pulling'){
@@ -92,7 +91,7 @@ pipeline {
         }
         
         
-          
+    }      
           
     
 }
