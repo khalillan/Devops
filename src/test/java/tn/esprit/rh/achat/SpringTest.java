@@ -16,21 +16,5 @@ import static org.junit.Assert.*;
 @ExtendWith(MockitoExtension.class)
 @Slf4j
 class SpringTest {
-@Autowired
-    IProduitService iProduitService;
 
-@Test
- void testAddProduit(){
-    ProduitDto produitDto=ProduitDto.builder()
-            .codeProduit("test")
-            .libelleProduit("test")
-            .dateCreation(new Date())
-            .prix(240F)
-            .dateDerniereModification(new Date())
-            .build();
-    ProduitDto saveProduit=iProduitService.addProduit(produitDto);
-    assertNotNull(saveProduit.getIdProduit());
-    iProduitService.deleteProduit(saveProduit.getIdProduit());
-
-}
 }
