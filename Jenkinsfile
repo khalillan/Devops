@@ -10,6 +10,10 @@ pipeline {
         NEXUS_URL = "192.168.1.153:8081/repository/LocalNexusRepo1/"
         NEXUS_REPOSITORY = "LocalNexusRepo1"
         NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
+        registry = "https://hub.docker.com/repository/docker/yahiahj/jenkins-spring"
+        registryCredential = 'dockerhub_id'
+        dockerImage = ''
+}
     }
     stages {
         stage('Git Pulling'){
@@ -81,11 +85,12 @@ pipeline {
         stage('Build Image'){
             steps{
                 script{
-                    sh 'docker build -t springyahia/app .'
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
 
         }
+        
         
     }      
           
