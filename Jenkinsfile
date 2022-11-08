@@ -78,6 +78,14 @@ pipeline {
                     }
                 }
             } 
+        stage('Build Image'){
+            steps{
+                script{
+                    sh 'docker build -t springyahia/app .'
+                }
+            }
+
+        }
         
     }      
           
