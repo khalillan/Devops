@@ -1,0 +1,66 @@
+import java.text.SimpleDateFormat
+
+pipeline {
+       agent any
+
+
+        stages{
+            stage('Checkout GIT'){
+                steps{
+                    echo 'Pulling...';
+                    git branch: 'rahma',
+                    url : 'https://github.com/khalillan/Devops.git',
+                   credentialsId:"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";
+                             }
+                             }
+
+               stage('MVN Package'){
+            steps {
+
+               sh ' mvn clean package '
+            }
+        }
+               stage("MVN Compile"){
+            steps {
+                sh ' mvn compile'
+
+            }
+        }
+      stage("SONARQUBE"){
+            steps {
+                sh ' mvn sonar:sonar'
+
+            }
+        }
+               stage("Junit/Mockito"){
+            steps {
+                sh ' mvn test'
+
+            }
+        }
+        stage('Nexus'){
+            steps{
+                sh 'mvn deploy'
+            }
+        }
+               stage("MVN Install"){
+            steps {
+                sh 'mvn install'
+
+            }
+        }
+         stage("Build the package"){
+                             steps {
+                               sh 'docker-compose up -d --build'
+                             }
+                        }
+
+       /* stage("MVN Clean"){
+            steps {
+                sh """mvn clean -e """
+            }
+        }*/
+
+
+        }
+        }
