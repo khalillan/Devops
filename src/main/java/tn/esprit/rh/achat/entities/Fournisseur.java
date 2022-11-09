@@ -30,7 +30,7 @@ public class Fournisseur implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idFournisseur;
+	private Long idFournisseur;
 	private String code;
 	private String libelle;
 	@Enumerated(EnumType.STRING)
@@ -38,12 +38,23 @@ public class Fournisseur implements Serializable {
 	@OneToMany(mappedBy="fournisseur")
 	@JsonIgnore
 	private Set<Facture> factures;
-    @ManyToMany
-    @JsonIgnore
-    private Set<SecteurActivite> secteurActivites;
-    @OneToOne(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
-    private DetailFournisseur detailFournisseur;
-    
+	@ManyToMany
+	@JsonIgnore
+	private Set<SecteurActivite> secteurActivites;
+	@OneToOne(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+	private DetailFournisseur detailFournisseur;
 
-	
+	public Fournisseur( Long idFournisseur, String code, String libelle) {
+		this.idFournisseur = idFournisseur;
+		this.code = code;
+		this.libelle = libelle;
+	}
+	public Fournisseur( String code, String libelle) {
+
+		this.code = code;
+		this.libelle = libelle;
+	}
+
+
+
 }

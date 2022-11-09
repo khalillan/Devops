@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
+import tn.esprit.rh.achat.services.FactureServiceImpl;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -29,11 +30,11 @@ import static org.junit.Assert.assertNotNull;
 
 public class FactureServiceImplMock1Test {
 
-/*
+
     @Mock
     FactureRepository factureRepository;
     @InjectMocks
-    FactureServiceImpl  FactureService;
+    FactureServiceImpl FactureService;
 
 
 
@@ -107,5 +108,5 @@ public class FactureServiceImplMock1Test {
 
 
 
-*/
+
 }
