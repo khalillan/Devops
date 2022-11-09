@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.esprit.examen</groupId>
 	<artifactId>DevopsProject</artifactId>
-	<version>4.8</version>
+	<version>4.1</version>
 	<packaging>jar</packaging>
 	<name>DevopsProject</name>
 	<description>DevopsProject</description>
