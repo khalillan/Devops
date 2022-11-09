@@ -25,7 +25,7 @@ services:
         spring.datasource.username : root
         spring.datasource.password" : root
   #service3:spring-boot-application
-  jenkins-spring:
+  achat:
     image: yahiahj/jenkins-spring
     container_name: achat-service-app
     ports :
