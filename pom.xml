@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.esprit.examen</groupId>
 	<artifactId>DevopsProject</artifactId>
-	<version>4.2</version>
+	<version>4.3</version>
 	<packaging>jar</packaging>
 	<name>DevopsProject</name>
 	<description>DevopsProject</description>
@@ -133,7 +133,7 @@
 		<repository>
 			<id>deploymentRepo</id>
 			<name>Nexus Repository</name>
-			<url>http://192.168.1.12:8081/repository/maven-releases/</url>
+			<url>http://192.168.1.24:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 
