@@ -11,7 +11,7 @@ pipeline {
         NEXUS_REPOSITORY = "LocalNexusRepo1"
         NEXUS_CREDENTIAL_ID = "NEXUS_2"
         registry = "yahiahj/jenkins-spring"
-        registryCredential = 'docker_hub'
+        registryCredential = 'Github_log'
         dockerImage = ''
     }
     stages {
