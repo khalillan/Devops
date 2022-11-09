@@ -9,7 +9,7 @@ pipeline {
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "192.168.1.153:8081/repository/LocalNexusRepo1/"
         NEXUS_REPOSITORY = "LocalNexusRepo1"
-        NEXUS_CREDENTIAL_ID = "NEXUS_CREDE"
+        NEXUS_CREDENTIAL_ID = "NEXUS_2"
         registry = "yahiahj/jenkins-spring"
         registryCredential = 'docker_hub'
         dockerImage = ''
