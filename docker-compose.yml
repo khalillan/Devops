@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    container_name: mysql_db
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: easyeat
+    ports:
+      - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+  #service2: phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: my-php-myadmin
+    ports:
+      - "8082:8080"
+    restart: always
+    depends_on:
+      - mysqldb
+    environment:
+        spring.datasource.username : root
+        spring.datasource.password" : root
+  #service3:spring-boot-application
+  achat:
+    image: achat-service
+    container_name: achat-service-app
+    build:
+      context: ,
+      dockerfile: Dockerfile
+    ports :
+      - "8089:8089"
+    restart: always
+    depends_on:
+      - mysqldb
+    environment:
+      spring.datasource.url: jdbc:mysql://mysql_db:3306/achatdb?createDatabaseIfNotExist=true
+      spring.datasource.username: root
+      spring.datasource.password: root
