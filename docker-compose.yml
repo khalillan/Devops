@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   api:
-    image: mortadhagaied/achat
+    image: homranimahdi/achat
     container_name: achat
     ports:
       - ${SPRING_LOCAL_PORT}:${SPRING_DOCKER_PORT}
