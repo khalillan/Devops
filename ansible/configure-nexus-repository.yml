@@ -8,7 +8,7 @@
       community.general.xml:
         path: /usr/lib/apache-maven-3.8.6/conf/settings.xml
         xpath: /x:settings/x:servers/x:server/x:id
-        value: esprit-devops
+        value: maven-releases
         namespaces:
           x: http://maven.apache.org/SETTINGS/1.2.0
 
