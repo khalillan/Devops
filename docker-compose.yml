@@ -26,7 +26,7 @@ services:
         spring.datasource.password" : root
   #service3:spring-boot-application
   achat:
-    image: yahiahj/jenkins-spring
+    image: yahiahj/jenkins-spring:454
     container_name: achat-service-app
     ports :
       - "8089:8089"
