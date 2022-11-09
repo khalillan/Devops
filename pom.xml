@@ -77,68 +77,56 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 	</dependencies>
+	<distributionManagement>
+		<repository>
+			<id>first project</id>
 
+			<url>http://172.10.0.140:8081/repository/maven-releases/</url>
+		</repository>
+	</distributionManagement>
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
 			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.1.0</version>
-			</plugin>
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.0.2</version>
-			</plugin>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
-			</plugin>
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.1</version>
-			</plugin>
-			<plugin>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
-			</plugin>
-			<plugin>
-				<artifactId>maven-install-plugin</artifactId>
-				<version>2.5.2</version>
-			</plugin>
-			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
-				<version>2.8.2</version>
-			</plugin>
-			<plugin>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>3.7.1</version>
-			</plugin>
-			<plugin>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>3.0.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>3.1.0</version>
 			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.8</version>
+				<executions>
+					<execution>
+						<id>jacoco-initialize</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
 		</plugins>
 		<finalName>docker-spring-boot</finalName>
 	</build>
-	<distributionManagement>
-		<repository>
-			<id>deploymentRepo</id>
-			<name>Nexus Repository</name>
-			<url>http://http://192.168.1.10:8081/repository/maven-releases/</url>
-		</repository>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<url>http://http://192.168.1.10:8081/repository/maven-snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
+
 
 
 </project>
