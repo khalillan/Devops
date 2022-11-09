@@ -14,7 +14,7 @@
 
     - name: update username
       community.general.xml:
-        path: /opt/maven/conf/settings.xml
+        path: /usr/lib/apache-maven-3.8.6/conf/settings.xml
         xpath: /x:settings/x:servers/x:server/x:username
         value: admin
         namespaces:
@@ -22,7 +22,7 @@
 
     - name: update password
       community.general.xml:
-        path: /opt/maven/conf/settings.xml
+        path: /usr/lib/apache-maven-3.8.6/conf/settings.xml
         xpath: /x:settings/x:servers/x:server/x:password
         value: esprit
         namespaces:
