@@ -70,11 +70,12 @@ public class FactureServiceImpl implements IFactureService {
 	}
 
 	@Override
-	public void cancelFacture(Long factureId) {
+	public Facture cancelFacture(Long factureId) {
 		Facture facture = factureRepository.findById(factureId).orElse(new Facture());
 		facture.setArchivee(true);
 		factureRepository.save(facture);
 		factureRepository.updateFacture(factureId);
+		return facture;
 	}
 
 	@Override
