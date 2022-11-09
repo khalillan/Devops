@@ -29,7 +29,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class FactureServiceImplMock1Test {
 
-
+/*
     @Mock
     FactureRepository factureRepository;
     @InjectMocks
@@ -107,5 +107,5 @@ public class FactureServiceImplMock1Test {
 
 
 
-
+*/
 }

@@ -13,17 +13,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.text.ParseException;
 
-import com.esprit.examen.entities.CategorieFournisseur;
-import com.esprit.examen.entities.DetailFacture;
-import com.esprit.examen.entities.Facture;
-import com.esprit.examen.entities.Fournisseur;
-import com.esprit.examen.entities.Operateur;
+
 
 import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
 public class FactureServiceImplTest {
+    /*
     @Autowired
     IFactureService factureService;
     @Autowired
