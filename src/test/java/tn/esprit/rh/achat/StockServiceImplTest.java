@@ -19,7 +19,7 @@ import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.services.IStockService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Slf4j
 public class StockServiceImplTest {
