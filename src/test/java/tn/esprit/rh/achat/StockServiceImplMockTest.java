@@ -17,7 +17,7 @@ import java.util.*;
 
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.*;
-
+@ExtendWith(MockitoExtension.class)
 public class StockServiceImplMockTest {
 
     @Mock
@@ -42,7 +42,6 @@ public class StockServiceImplMockTest {
 
     @Test
     void testRetrieveProduitByid() {
-
         when(stockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(stock));
         Stock stockq = stockService.retrieveStock(1L);
 
