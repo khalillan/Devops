@@ -15,7 +15,7 @@ import tn.esprit.rh.achat.services.FournisseurServiceImpl;
 
 import java.util.Optional;
 
-@SpringBootTest
+
 @ExtendWith(MockitoExtension.class)
 @Slf4j
 public class SpringTest {
