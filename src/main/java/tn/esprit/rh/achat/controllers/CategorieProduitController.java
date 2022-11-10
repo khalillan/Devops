@@ -42,7 +42,7 @@ public class CategorieProduitController {
 		CategorieProduit persistentC = modelMapper.map(cp,  CategorieProduit.class);
 		return categorieProduitService.addCategorieProduit(persistentC );
 	}
-
+//jgjghj
 
 	@DeleteMapping("/remove-categorieProduit/{categorieProduit-id}")
 	@ResponseBody
