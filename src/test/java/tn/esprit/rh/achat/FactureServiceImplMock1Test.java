@@ -23,7 +23,7 @@ import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-@SpringBootTest
+
 @RunWith(MockitoJUnitRunner.class)
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)

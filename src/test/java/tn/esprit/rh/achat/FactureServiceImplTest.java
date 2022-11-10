@@ -20,6 +20,7 @@ import java.text.ParseException;
 
 import lombok.extern.slf4j.Slf4j;
 import tn.esprit.rh.achat.entities.Facture;
+import tn.esprit.rh.achat.entities.Fournisseur;
 import tn.esprit.rh.achat.services.IFactureService;
 import tn.esprit.rh.achat.services.IFournisseurService;
 import tn.esprit.rh.achat.services.IOperateurService;
@@ -83,28 +84,16 @@ public class FactureServiceImplTest {
 
 
     }
+    /*
     @Test
     public void testUpdateFournisseur() throws ParseException{
         Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
         Facture operateurUpdated = factureService. cancelFacture(f.getIdFacture());
         Assertions.assertEquals(f.getMontantFacture(),operateurUpdated.getMontantFacture());
     }
+*/
 
-/*	 @Test
-	public void testgetFacturesByFournisseur() throws ParseException  {
-		Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
-		Facture savedFactrure= factureService.addFacture(f);
-		List<Facture> f1  = new ArrayList<>();
-		f1.add(savedFactrure);
-		 Fournisseur fournisseur = new Fournisseur(1L,"112","aaa", f1);
-		Fournisseur savedFournisseur= fournisseurService.addFournisseur(fournisseur);
-		List<Facture> factures = factureService.getFacturesByFournisseur(1L);
-		List<Facture>l1= new ArrayList<>( factures) ;
-		 assertNotNull(l1);
-		 for (Facture facture : factures) {
-		log.info(" facture: " + facture.getMontantFacture()+ " né le "+facture.getMontantRemise());
-		}
-	}
+    /*
 	/*
 	@Test
 	public void testassignOperateurToFacture() throws ParseException{
