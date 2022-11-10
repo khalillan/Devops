@@ -3,6 +3,7 @@ services:
   api:
     image: saidboch/bouchouicha
     container_name: bouchouicha
+
     ports:
       - ${SPRING_LOCAL_PORT}:${SPRING_DOCKER_PORT}
     depends_on:
