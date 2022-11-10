@@ -33,6 +33,11 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+        stage('Testing..') {
+            steps {
+                sh 'mvn test'
+            }
+        }
         stage("build & SonarQube analysis") {
             steps {
                 withSonarQubeEnv('sonar1234') {

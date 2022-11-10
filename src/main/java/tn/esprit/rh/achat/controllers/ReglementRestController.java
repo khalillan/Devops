@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.rh.achat.Dto.ReglementDto;
 import tn.esprit.rh.achat.entities.Reglement;
 import tn.esprit.rh.achat.services.IReglementService;
 
@@ -23,27 +24,26 @@ public class ReglementRestController {
 
     @PostMapping("/add-reglement")
     @ResponseBody
-    public Reglement addReglement(@RequestBody Reglement r) {
-
-        return reglementService.addReglement(r) ;
+    public ReglementDto addReglement(@RequestBody ReglementDto reglementDto) {
+        return reglementService.addReglement(reglementDto);
     }
     @GetMapping("/retrieve-all-reglements")
     @ResponseBody
-    public List<Reglement> getReglement() {
-        return  reglementService.retrieveAllReglements();
+    public List<ReglementDto> getReglement() {
+        return reglementService.retrieveAllReglements();
     }
 
 
     @GetMapping("/retrieve-reglement/{reglement-id}")
     @ResponseBody
-    public Reglement retrieveReglement(@PathVariable("reglement-id") Long reglementId) {
+    public ReglementDto retrieveReglement(@PathVariable("reglement-id") Long reglementId) {
         return reglementService.retrieveReglement(reglementId);
     }
 
-
     @GetMapping("/retrieveReglementByFacture/{facture-id}")
     @ResponseBody
-    public List<Reglement> retrieveReglementByFacture(@PathVariable("facture-id") Long factureId) {
+    public List<ReglementDto> retrieveReglementByFacture(@PathVariable("facture-id") Long factureId) {
+
         return reglementService.retrieveReglementByFacture(factureId);
     }
 
