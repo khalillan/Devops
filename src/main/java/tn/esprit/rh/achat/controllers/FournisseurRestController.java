@@ -2,11 +2,8 @@ package tn.esprit.rh.achat.controllers;
 
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.modelmapper.ModelMapper;
-import tn.esprit.rh.achat.DTO.FournisseurDto;
+import tn.esprit.rh.achat.Dto.FournisseurDto;
 import tn.esprit.rh.achat.entities.Fournisseur;
 import tn.esprit.rh.achat.services.IFournisseurService;
 
@@ -21,9 +18,6 @@ public class FournisseurRestController {
 	@Autowired
 	IFournisseurService fournisseurService;
 
-	// @Autowired
-	// private ModelMapper modelMapper;
-
 	@GetMapping("/retrieve-all-fournisseurs")
 	@ResponseBody
 	public List<Fournisseur> getFournisseurs() {
@@ -36,14 +30,10 @@ public class FournisseurRestController {
 		return fournisseurService.retrieveFournisseur(fournisseurId);
 	}
 
-	// http://localhost:8089/SpringMVC/fournisseur/add-fournisseur
 	@PostMapping("/add-fournisseur")
 	@ResponseBody
-	public ResponseEntity<FournisseurDto> addFournisseur(@RequestBody FournisseurDto f) {
-	//	Fournisseur fournisseurRequest = modelMapper.map(f, Fournisseur.class);
-	//	Fournisseur fournisseur = fournisseurService.addFournisseur(fournisseurRequest);
-	//	FournisseurDto fournisseurDto = modelMapper.map(fournisseur, FournisseurDto.class);
-		return null;
+	public Fournisseur addFournisseur(@RequestBody Fournisseur f) {
+		return fournisseurService.addFournisseur(f);
 	}
 
 	@DeleteMapping("/remove-fournisseur/{fournisseur-id}")
@@ -54,17 +44,13 @@ public class FournisseurRestController {
 
 	@PutMapping("/modify-fournisseur")
 	@ResponseBody
-	public ResponseEntity<FournisseurDto> modifyFournisseur(@RequestBody FournisseurDto fournisseurDto) {
-	//	Fournisseur fournisseurRequest = modelMapper.map(fournisseurDto, Fournisseur.class);
-
-	//	Fournisseur fournisseur = fournisseurService.updateFournisseur(fournisseurRequest);
-	//	FournisseurDto fournisseurResponse = modelMapper.map(fournisseur , FournisseurDto.class);
-		return  null;
+	public Fournisseur modifyFournisseur(@RequestBody Fournisseur fournisseur) {
+		return fournisseurService.updateFournisseur(fournisseur);
 	}
 
-		@PutMapping(value = "/assignSecteurActiviteToFournisseur/{idSecteurActivite}/{idFournisseur}")
-		public void assignProduitToStock(@PathVariable("idSecteurActivite") Long idSecteurActivite, @PathVariable("idFournisseur") Long idFournisseur) {
-			fournisseurService.assignSecteurActiviteToFournisseur(idSecteurActivite, idFournisseur);
-		}
+	@PutMapping(value = "/assignSecteurActiviteToFournisseur/{idSecteurActivite}/{idFournisseur}")
+	public void assignProduitToStock(@PathVariable("idSecteurActivite") Long idSecteurActivite, @PathVariable("idFournisseur") Long idFournisseur) {
+		fournisseurService.assignSecteurActiviteToFournisseur(idSecteurActivite, idFournisseur);
+	}
 
 }

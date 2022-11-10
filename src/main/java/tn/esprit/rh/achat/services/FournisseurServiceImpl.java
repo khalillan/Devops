@@ -3,7 +3,8 @@ package tn.esprit.rh.achat.services;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.rh.achat.DTO.FournisseurDto;
+import tn.esprit.rh.achat.Dto.DetailFournisseurDto;
+import tn.esprit.rh.achat.Dto.FournisseurDto;
 import tn.esprit.rh.achat.entities.DetailFournisseur;
 import tn.esprit.rh.achat.entities.Fournisseur;
 import tn.esprit.rh.achat.entities.SecteurActivite;
@@ -28,8 +29,6 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	@Autowired
 	SecteurActiviteRepository secteurActiviteRepository;
 
-
-
 	@Override
 	public List<Fournisseur> retrieveAllFournisseurs() {
 		List<Fournisseur> fournisseurs = (List<Fournisseur>) fournisseurRepository.findAll();
@@ -39,16 +38,15 @@ public class FournisseurServiceImpl implements IFournisseurService {
 		return fournisseurs;
 	}
 
-	@Override
+
 	public Fournisseur addFournisseur(Fournisseur f /*Master*/) {
 		DetailFournisseur df= new DetailFournisseur();//Slave
 		df.setDateDebutCollaboration(new Date()); //util
 		//On affecte le "Slave" au "Master"
-		f.setDetailFournisseur(df);	
+		f.setDetailFournisseur(df);
 		fournisseurRepository.save(f);
 		return f;
 	}
-
 
 	private DetailFournisseur  saveDetailFournisseur(Fournisseur f){
 		DetailFournisseur df = f.getDetailFournisseur();
@@ -58,7 +56,7 @@ public class FournisseurServiceImpl implements IFournisseurService {
 
 	public Fournisseur updateFournisseur(Fournisseur f) {
 		DetailFournisseur df = saveDetailFournisseur(f);
-		f.setDetailFournisseur(df);	
+		f.setDetailFournisseur(df);
 		fournisseurRepository.save(f);
 		return f;
 	}
@@ -71,16 +69,20 @@ public class FournisseurServiceImpl implements IFournisseurService {
 
 	@Override
 	public Fournisseur retrieveFournisseur(long fournisseurId) {
-		return fournisseurRepository.findById(fournisseurId).orElse(null);
+
+		Fournisseur fournisseur = fournisseurRepository.findById(fournisseurId).orElse(null);
+		return fournisseur;
 	}
 
 	@Override
-	public void assignSecteurActiviteToFournisseur(long idSecteurActivite, long idFournisseur) {
+	public void assignSecteurActiviteToFournisseur(Long idSecteurActivite, Long idFournisseur) {
 		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
-		if (fournisseur != null) {
-			SecteurActivite secteurActivite = secteurActiviteRepository.findById(idSecteurActivite).orElse(null);
-			fournisseur.getSecteurActivites().add(secteurActivite);
-			fournisseurRepository.save(fournisseur);
-		}
-		}
+		SecteurActivite secteurActivite = secteurActiviteRepository.findById(idSecteurActivite).orElse(null);
+		fournisseur.getSecteurActivites().add(secteurActivite);
+		fournisseurRepository.save(fournisseur);
+
+
+	}
+
+
 }
