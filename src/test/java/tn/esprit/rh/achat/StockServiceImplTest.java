@@ -7,6 +7,14 @@ import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import static org.junit.Assert.*;
+
+
+import java.util.List;
+
+
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -18,8 +26,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.services.IStockService;
 
-@RunWith(SpringRunner.class)
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Slf4j
 public class StockServiceImplTest {
