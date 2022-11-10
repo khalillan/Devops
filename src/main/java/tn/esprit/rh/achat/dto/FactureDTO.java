@@ -16,4 +16,5 @@ public class FactureDTO {
     @Temporal(TemporalType.DATE)
     private Date dateDerniereModificationFacture;
     private Boolean archivee;
+
 }
